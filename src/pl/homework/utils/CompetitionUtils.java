@@ -23,11 +23,9 @@ public class CompetitionUtils {
         while (!(line = sc.nextLine()).equals("stop")) {
             String[] array = line.split(" ");
             try {
-                if ((player = checkData(array)) != null) {
-                    players.add(player);
-                }
+                players.add(checkData(array));
             } catch (NumberFormatException ex) {
-                System.out.println("Błędny format wyniku zawodnika " + ex.getMessage());
+                System.out.println("Błędny format wyniku zawodnika. " + ex.getMessage());
             } catch (InvalidPlayerData ex) {
                 System.out.println(ex.getMessage());
             }
@@ -44,10 +42,10 @@ public class CompetitionUtils {
         bufferedWriter.close();
     }
 
-    private static Player checkData(String[] array) throws InvalidPlayerData, NumberFormatException {
+    private static Player checkData(String[] array) throws InvalidPlayerData {
         String name = "";
         int score = 0;
-        if (array.length == 3 || array.length == 2) {
+        if (array.length > 2) {
                 score = Integer.parseInt(array[array.length-1]);
                 for (int i = 0; i < array.length-1; i++) {
                     name += array[i] + (i < array.length-2 ? " " : "");
