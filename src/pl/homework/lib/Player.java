@@ -1,6 +1,6 @@
 package pl.homework.lib;
 
-public class Player implements Comparable<Player> {
+public class Player {
     private String name;
     private int score;
 
@@ -31,18 +31,6 @@ public class Player implements Comparable<Player> {
                 "name='" + name + '\'' +
                 ", score=" + score +
                 '}' + "\n";
-    }
-
-    @Override
-    public int compareTo(Player o) {
-        if (this.score > o.score) {
-            return 1;
-        };
-        if (this.score == o.score) {
-            return 0;
-        } else {
-            return -1;
-        }
     }
 
     public String toCSV() {
